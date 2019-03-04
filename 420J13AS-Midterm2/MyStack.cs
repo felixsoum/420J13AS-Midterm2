@@ -7,25 +7,22 @@
 
         public void Push(T x)
         {
-            //TODO
+            stack[++top] = x;
         }
 
         public T Pop()
         {
-            //TODO
-            return default(T);
+            return stack[top--];
         }
 
         public T Peek()
         {
-            //TODO
-            return default(T);
+            return stack[top];
         }
 
         public int Count()
         {
-            //TODO
-            return 0;
+            return top + 1;
         }
     }
 }

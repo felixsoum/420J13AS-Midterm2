@@ -46,6 +46,21 @@ namespace _420J13AS_Midterm2
             Console.WriteLine($"Peek: {queue.Peek()}");
             Console.WriteLine(queue.Dequeue());
             Console.WriteLine($"Count: {queue.Count()}");
+
+            //Bonus
+            StackedQueue<char> bonusQueue = new StackedQueue<char>();
+            bonusQueue.Enqueue('b');
+            bonusQueue.Enqueue('a');
+            bonusQueue.Enqueue('d');
+            bonusQueue.Enqueue('c');
+
+            bonusQueue.Sort();
+            string bonusOutput = "";
+            while (bonusQueue.Count() > 0)
+            {
+                bonusOutput += bonusQueue.Dequeue();
+            }
+            Console.WriteLine(bonusOutput);
         }
 
         static void Swap(int[] array, int i, int j)
@@ -72,8 +87,17 @@ namespace _420J13AS_Midterm2
 
         static int Partition(int[] array, int p, int r)
         {
-            //TODO
-            return p;
+            int x = array[r];
+            int i = p - 1;
+            for (int j = p; j < r; j++)
+            {
+                if (array[j] <= x)
+                {
+                    Swap(array, ++i, j);
+                }
+            }
+            Swap(array, ++i, r);
+            return i;
         }
 
         static void UnluckySort(int[] array, int unluckyNumber)
@@ -93,8 +117,17 @@ namespace _420J13AS_Midterm2
 
         static int UnluckyPartition(int[] array, int p, int r, int unluckyNumber)
         {
-            //TODO
-            return p;
+            int x = array[r];
+            int i = p - 1;
+            for (int j = p; j < r; j++)
+            {
+                if (array[j] >= x && x != unluckyNumber || array[j] == unluckyNumber)
+                {
+                    Swap(array, ++i, j);
+                }
+            }
+            Swap(array, ++i, r);
+            return i;
         }
     }
 }
